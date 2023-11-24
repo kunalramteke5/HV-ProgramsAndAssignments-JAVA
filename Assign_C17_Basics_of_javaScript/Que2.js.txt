@@ -1,0 +1,59 @@
+function isValidRow(board, row) {
+    let seen = new Set();
+    for (let j = 0; j < 9; j++) {
+        let number = board[row][j];
+        if (number != '.') {
+            if (seen.has(number)) {
+                return false;
+            }
+            seen.add(number);
+        }
+    }
+    return true;
+}
+
+function isValidColumn(board, column) {
+    let seen = new Set();
+    for (let i = 0; i < 9; i++) {
+        let number = board[i][column];
+        if (number != '.') {
+            if (seen.has(number)) {
+                return false;
+            }
+            seen.add(number);
+        }
+    }
+    return true;
+}
+
+function isValidBox(board, startRow, startCol) {
+    let seen = new Set();
+    for (let i = 0; i < 3; i++) {
+        for (let j = 0; j < 3; j++) {
+            let number = board[i + startRow][j + startCol];
+            if (number != '.') {
+                if (seen.has(number)) {
+                    return false;
+                }
+                seen.add(number);
+            }
+        }
+    }
+    return true;
+}
+
+function isValidSudoku(board) {
+    for (let i = 0; i < 9; i++) {
+        if (!isValidRow(board, i) || !isValidColumn(board, i)) {
+            return false;
+        }
+    }
+    for (let i = 0; i < 9; i += 3) {
+        for (let j = 0; j < 9; j += 3) {
+            if (!isValidBox(board, i, j)) {
+                return false;
+            }
+        }
+    }
+    return true;
+}

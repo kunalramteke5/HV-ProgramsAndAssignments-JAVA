@@ -1,0 +1,15 @@
+let customers = [
+    {customerID: 1, customerName: 'John Doe', totalBillingAmount: 3500},
+    {customerID: 2, customerName: 'Jane Doe', totalBillingAmount: 2500},
+    {customerID: 3, customerName: 'Bob Smith', totalBillingAmount: 4000},
+    // more customers...
+];
+
+let selectedCustomers = customers.filter(customer => customer.totalBillingAmount > 3000);
+
+selectedCustomers.forEach(customer => {
+    console.log(`Customer ID: ${customer.customerID}`);
+    console.log(`Customer Name: ${customer.customerName}`);
+    console.log(`Total Billing Amount: ${customer.totalBillingAmount}`);
+    console.log('---------------------------------');
+});
